@@ -14,12 +14,12 @@ install_tool="apt-get -o Debug::pkgProblemResolver=yes --no-install-recommends -
 # Install build dependencies automatically
 mk-build-deps --install --tool="${install_tool}" debian/control
 # First build the source package
-dpkg-buildpackage --build=source "$INPUT_ARGS"
+dpkg-buildpackage --build=source $INPUT_ARGS
 # Then a normal build
-dpkg-buildpackage "$INPUT_ARGS"
+dpkg-buildpackage $INPUT_ARGS
 # Output the filename
 cd ..
 ls -l
 mkdir -p /workspace/output/
 # Move the built package into the Docker mounted workspace
-mv -v *.{deb,dsc,changes,buildinfo,tar.xz} /workspace/output/
+mv -v *.{deb,dsc,changes,buildinfo,tar.*} /workspace/output/
