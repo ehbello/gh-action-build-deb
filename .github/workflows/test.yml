@@ -48,7 +48,7 @@ jobs:
         path: action
     - uses: ./action
       with:
-        args: --no-sign
+        args: --no-sign --compression=xz
         platform: ${{ matrix.platform }}
 
     - name: Create sha256sum
