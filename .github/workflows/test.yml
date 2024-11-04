@@ -45,9 +45,8 @@ jobs:
 
     - uses: actions/checkout@v4
       with:
-        path: _gh-action-build-deb
-
-    - uses: ./_gh-action-build-deb
+        path: action
+    - uses: ./action
       with:
         args: |
           --no-sign

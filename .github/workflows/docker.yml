@@ -6,6 +6,7 @@ on:
     paths:
     - '**Dockerfile'
     - '**docker.yml'
+    - 'entrypoint.sh'
   workflow_dispatch:
   schedule:
     - cron: '30 11 20 */3 *'
