@@ -20,15 +20,17 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - uses: actions/checkout@v4
-      with:
-        repository: andy5995/gh-action-build-deb
-        path: _gh-action-build-deb
     - name: Setup QEMU
       if: ${{ !contains(inputs.platform, 'amd64') }}
       uses: docker/setup-qemu-action@v3
     - name: Build Debian package
       run: |
+        if [ ! -d "_gh-action-build-deb" ]; then
+          mkdir _gh-action-build-deb
+          cd _gh-action-build-deb
+          curl -LO https://raw.githubusercontent.com/andy5995/gh-action-build-deb/refs/tags/latest/entrypoint.sh
+          cd
+        fi
         docker run --rm \
           -v ${{ github.workspace }}:/workspace \
           -w /workspace \
