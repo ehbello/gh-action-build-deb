@@ -1,4 +1,4 @@
-FROM debian:bookworm
+FROM debian:bookworm-slim
 
 ARG DEBIAN_FRONTEND=noninteractive
 ENV DEBIAN_FRONTEND=$DEBIAN_FRONTEND
@@ -8,7 +8,8 @@ RUN \
   apt install -y \
     build-essential \
     debhelper \
-    devscripts equivs \
+    devscripts \
+    equivs \
     software-properties-common
 
 RUN sed -i 's/Types: deb/Types: deb deb-src/' /etc/apt/sources.list.d/debian.sources
